@@ -65,7 +65,10 @@ const AnimateRace = () => {
           />
         </>
       ) : (
-        <img className='p-0 mt-1 w-15' src={sitting2} alt="sitting" />
+        <motion.img  
+          drag='x'
+          dragConstraints={{ left : -10 , right : 0 }}
+        className='p-0 mt-1 w-15' src={sitting2} alt="sitting" />
       )}
 
     </div>

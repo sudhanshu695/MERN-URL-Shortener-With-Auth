@@ -11,10 +11,18 @@ export async function handleGenerateNewShortURL(req, res) {
     shortId: shortID,
     redirectURL: body.url,
     visitHistory: [],
+    createdBy : req.user._id, // coming from auth middleware 
   });
 
-  return res.json({ id: shortID });
+  console.log(req.user._id);
+
+  return res.json({
+     id: shortID,
+     longURL : body.url,
+     createdBy : req.user._id,
+    });
 }
+
 
 export async function handleGetAnalytics(req, res) {
   const shortId = req.params.shortId;
