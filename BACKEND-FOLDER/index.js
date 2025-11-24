@@ -16,6 +16,7 @@ connectMongo("mongodb://127.0.0.1:27017/short-url").then(() =>
 //When you send a request with a JSON body (like from Postman or frontend): Express by default cannot read this body.
 //using this middleware
 //whenever a request comes with JSON in its body,
+app.use(express.json()); 
 // please parse it, convert it into a JavaScript object,
 // and attach it to req.body
 
@@ -27,10 +28,7 @@ app.use(cors({
     credentials: true,              // allow surver to accept cookie
 }));
 
-app.use(cookieParser());
-
-
-app.use(express.json()); 
+app.use(cookieParser());  // converting cookies into js obj
 
 
 app.use('/url' , UserRouter);

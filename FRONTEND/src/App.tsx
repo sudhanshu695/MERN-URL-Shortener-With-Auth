@@ -8,6 +8,7 @@ import AboutPage from "./components/About";
 import Login from "./components/Login";
 import axios from "axios";
 import Analytics from "./components/Analytics";
+import Contact from "./components/Contact";
 
 axios.defaults.withCredentials = true;
 
@@ -23,6 +24,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path='/about' element={<AboutPage />} />
           <Route path="/analytics" element={<Analytics />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
     </div>
   );

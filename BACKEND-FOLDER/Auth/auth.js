@@ -1,11 +1,26 @@
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv"
 
+dotenv.config();
+const secret = process.env.JWT_TOKEN;
 
-const sessionIdToUserMap = new Map();
+export function setUser(user) {
+  const payload = {
+    _id: user._id,
+    email: user.email,
+  };
 
-export function setUser(id  , user) {
-    sessionIdToUserMap.set(id , user)
+  return jwt.sign(payload, secret, {expiresIn : '7d'} );
 }
 
-export function getUser(id) {
-    return sessionIdToUserMap.get(id)
+export function getUser(tokenByJWT) {
+  //   return sessionIdToUserMap.get(id); // end of map
+
+  if (!tokenByJWT) return;
+
+  try {
+    return jwt.verify(tokenByJWT, secret);
+  } catch (error) {
+    return null;
+  }
 }

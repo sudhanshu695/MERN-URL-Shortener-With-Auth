@@ -54,7 +54,7 @@ const AboutPage = () => {
           <div className="bg-white/10 border border-white/20 p-6 rounded-2xl shadow-md backdrop-blur-md hover:bg-white/20 transition">
             <h2 className="text-xl font-semibold mb-3">Trackable</h2>
             <p className="text-white/70 text-sm">
-              (Optional) Analytics support lets you track clicks and user engagement.
+              Analytics support lets you track clicks and user engagement.
             </p>
           </div>
         </div>

@@ -4,7 +4,6 @@ import { setUser } from "../Auth/auth.js";
 
 export const handleUserSignup = async (req, res) => {
 
-
   try {
     console.log("Received body:", req.body);
     const { name, email, password } = req.body;
@@ -42,10 +41,12 @@ export const handleUserLogin = async (req, res) => {
       success: false,
       message: "Invalid email or Password",
     });
-  } 
-    const sessionId = uuidv4();
-    setUser(sessionId , user);
-    res.cookie('uid' , sessionId);
+  }
+
+    // const sessionId = uuidv4(); // now we are using jwt so no need of sessionId
+
+    const tokenByJWT = setUser(user);
+    res.cookie('uid' , tokenByJWT);
     return res.status(201).json({
       success: true,
       message: "Login Successful",
